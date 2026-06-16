@@ -11,15 +11,17 @@ export default function WorkExperiences({
   id,
 }: Pick<React.HtmlHTMLAttributes<HTMLDivElement>, "id">) {
   const jobs = getWorkExperiences();
-  const bgColor = "bg-linear-to-b from-(--from-color) to-(--to-color)";
+  const bgColor =
+    "bg-linear-to-b from-(--from-color) to-(--to-color) dark:from-(--from-color)/20 dark:to-(--to-color)/20";
 
   const [current, setCurrent] = useState(0);
   const [fromBg, toBg] = getThemeBackground(jobs[current].theme);
   const yearClass = (active: boolean) =>
-    `cursor-pointer w-fit text-sm uppercase mix-blend-luminosity ${active ? "text-zinc-700" : "text-zinc-400"}`;
+    `cursor-pointer w-fit text-sm uppercase mix-blend-luminosity ${active ? "text-zinc-700 dark:text-zinc-200" : "text-zinc-400 dark:text-zinc-500"}`;
+  const backgroundClass = "dark:text-white dark:bg-black";
 
   return (
-    <div id={id} className="relative">
+    <div id={id} className={`relative ${backgroundClass}`}>
       <section
         className={`sticky top-0 w-screen h-screen p-5 md:p-20 grid grid-rows-[15%_min-content_1fr] gap-y-10 md:gap-y-12 ${bgColor}`}
         style={
@@ -150,7 +152,7 @@ function JobDescription({
 }) {
   return (
     <section
-      className={`hidden md:block text-base/7 text-zinc-600 space-y-5 ${visible ? "opacity-100" : "opacity-0"} transition-opacity`}
+      className={`hidden md:block text-base/7 text-zinc-600 dark:text-zinc-50  space-y-5 ${visible ? "opacity-100" : "opacity-0"} transition-opacity`}
     >
       {job.duties.map((duty) => (
         <p key={duty}>{duty}</p>

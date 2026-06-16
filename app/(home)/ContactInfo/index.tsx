@@ -25,10 +25,13 @@ const contacts = [
 export default function ContactInfo({
   id,
 }: Pick<React.HtmlHTMLAttributes<HTMLDivElement>, "id">) {
+  const backgroundClass =
+    "bg-linear-to-b from-taupe-0 to-taupe-150  dark:text-white dark:from-zinc-900 dark:to-zinc-800";
+
   return (
     <section
       id={id}
-      className="w-screen h-screen p-5 md:p-20 flex flex-col justify-center gap-y-10 bg-linear-to-b from-taupe-0 to-taupe-150"
+      className={`w-screen h-screen p-5 md:p-20 flex flex-col justify-center gap-y-10 ${backgroundClass}`}
     >
       <header className="flex flex-col justify-end text-center space-y-2 mix-blend-luminosity">
         <h2 className="font-signature text-2xl md:text-3xl">Contact Me</h2>
@@ -42,7 +45,7 @@ export default function ContactInfo({
           <li key={contact.name}>
             <Link href={contact.url} title={contact.title} target="_blank">
               <Image
-                className="size-12 md:size-20 object-cover transition-transform duration-300 hover:scale-120"
+                className={`size-12 md:size-20 object-cover transition-transform duration-300 hover:scale-120 ${contact.name === "GitHub" ? "dark:invert" : ""}`}
                 src={contact.icon}
                 alt={contact.name}
                 width={80}

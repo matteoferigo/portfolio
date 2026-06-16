@@ -8,11 +8,13 @@ export default function EducationHistory({
 }: Pick<React.HtmlHTMLAttributes<HTMLDivElement>, "id">) {
   const degrees = getEducationHistory();
   const languages = getLanguages();
+  const backgroundClass =
+    "bg-linear-to-b from-taupe-0 to-taupe-150  dark:text-white dark:from-zinc-900 dark:to-zinc-800";
 
   return (
     <div
       id={id}
-      className="w-screen h-screen p-5 md:p-20 flex flex-col justify-center gap-y-25 bg-linear-to-b from-taupe-0 to-taupe-150"
+      className={`w-screen h-screen p-5 md:p-20 flex flex-col justify-center gap-y-25 ${backgroundClass}`}
     >
       <section className="flex flex-col gap-y-5 md:gap-y-10">
         <header className="flex flex-col justify-end text-center space-y-2 mix-blend-luminosity">
@@ -45,7 +47,7 @@ export default function EducationHistory({
               />
 
               <div className="space-y-0.25">
-                <p className="text-xs uppercase text-zinc-400 -mb-0.5">
+                <p className="text-xs uppercase text-zinc-400 -mb-0.5 dark:text-zinc-500">
                   {new Date(degree.startDate).getFullYear()}
                   {" – "}
                   {degree.endDate
@@ -56,7 +58,7 @@ export default function EducationHistory({
                 <div>
                   <h3>
                     <TextHoverHighlight
-                      className="text-lg md:text-xl font-semibold text-zinc-800"
+                      className="text-lg md:text-xl font-semibold text-zinc-800 dark:text-white"
                       hoverTextColor="#fff"
                       hoverBgColor={degree.theme}
                     >
@@ -67,7 +69,7 @@ export default function EducationHistory({
 
                 <h4 className="text-sm space-x-1.5">
                   <span className="text-zinc-400">{degree.degree}</span>
-                  <span className="hidden md:inline-block text-zinc-600">
+                  <span className="hidden md:inline-block text-zinc-600  dark:text-zinc-400">
                     {degree.school.name}
                   </span>
                 </h4>
@@ -99,7 +101,7 @@ export default function EducationHistory({
               />
 
               <span
-                className="text-xs uppercase text-zinc-500"
+                className="text-xs uppercase text-zinc-500 dark:text-zinc-400"
                 title={language.level}
               >
                 {language.levelCode || language.level}

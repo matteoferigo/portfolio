@@ -5,17 +5,19 @@ import Image from "next/image";
 export default function Hero({
   id,
 }: Pick<React.HtmlHTMLAttributes<HTMLDivElement>, "id">) {
+  const backgroundClass =
+    "bg-linear-to-b from-taupe-0 to-taupe-150  dark:text-white dark:from-zinc-900 dark:to-zinc-800";
   return (
     <section
       id={id}
-      className="w-screen h-screen flex flex-col justify-between p-8 bg-linear-to-b from-taupe-0 to-taupe-150"
+      className={`w-screen h-screen flex flex-col justify-between p-8 ${backgroundClass}`}
     >
       <div />
 
       <main className="flex flex-col md:flex-row justify-center items-center gap-x-8 gap-y-4">
         <div className="group relative size-xl md:size-2xl rounded-2xl overflow-hidden shadow-xl">
           <Image
-            className="absolute top-0 z-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            className="absolute top-0 z-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 dark:opacity-100"
             src="/matrix.jpg"
             alt="Matteo Ferigo with Matrix filter"
             width={200}
@@ -38,7 +40,9 @@ export default function Hero({
             delay={100}
           >
             {"Hi, I'm "}
-            <strong className="font-signature">Matteo</strong>
+            <strong className="font-signature dark:font-semibold">
+              Matteo
+            </strong>
           </TextPopup>
           <TextPopup
             as="h2"
@@ -60,7 +64,7 @@ export default function Hero({
 
       <footer className="text-center text-lg md:text-2xl">
         <TextGradient
-          className="text-shadow-xs text-shadow-zinc-50"
+          className="text-shadow-xs text-shadow-zinc-100 dark:invert dark:opacity-50"
           startColor="#6b7280"
           middleColor="#e1e2e5"
           endColor="#6b7280"

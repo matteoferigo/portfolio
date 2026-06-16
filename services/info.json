@@ -1,0 +1,13 @@
+{
+  "firstName": "Matteo",
+  "lastName": "Ferigo",
+  "gender": "Male",
+  "jobTitle": "Senior Frontend Engineer",
+  "image": "https://matteoferigo.netlify.app/avatar.jpg",
+  "email": "matteoferigo@gmail.com",
+  "url": "https://matteoferigo.netlify.app",
+  "socials": {
+    "github": "https://github.com/matteoferigo",
+    "linkedin": "https://www.linkedin.com/in/matteo-ferigo"
+  }
+}

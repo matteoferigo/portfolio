@@ -1,23 +1,24 @@
 import Image from "next/image";
 import Link from "next/link";
+import info from "@/services/info.json";
 
 const contacts = [
   {
     name: "Email",
     icon: "/images/envelope.svg",
-    url: "mailto:matteoferigo@gmail.com",
+    url: `mailto:${info.email}`,
     title: "Write me an email",
   },
   {
     name: "LinkedIn",
     icon: "/images/linkedin.svg",
-    url: "https://www.linkedin.com/in/matteo-ferigo",
+    url: info.socials.linkedin,
     title: "Connect on LinkedIn",
   },
   {
     name: "GitHub",
     icon: "/images/github.svg",
-    url: "https://github.com/matteoferigo",
+    url: info.socials.github,
     title: "Check out my GitHub",
   },
 ] as const;

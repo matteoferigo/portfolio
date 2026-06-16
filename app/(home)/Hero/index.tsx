@@ -1,6 +1,7 @@
 import TextGradient from "@/components/text/TextGradient";
 import TextPopup from "@/components/text/TextPopup";
 import Image from "next/image";
+import info from "@/services/info.json";
 
 export default function Hero({
   id,
@@ -19,14 +20,14 @@ export default function Hero({
           <Image
             className="absolute top-0 z-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 dark:opacity-100"
             src="/matrix.jpg"
-            alt="Matteo Ferigo with Matrix filter"
+            alt={`${info.firstName} ${info.lastName} with Matrix filter`}
             width={200}
             height={200}
           />
           <Image
             className="-z-1 grayscale-25"
             src="/avatar.jpg"
-            alt="Matteo Ferigo avatar"
+            alt={`${info.firstName} ${info.lastName} avatar`}
             width={200}
             height={200}
             priority
@@ -41,7 +42,7 @@ export default function Hero({
           >
             {"Hi, I'm "}
             <strong className="font-signature dark:font-semibold">
-              Matteo
+              {info.firstName}
             </strong>
           </TextPopup>
           <TextPopup
@@ -56,7 +57,7 @@ export default function Hero({
               endColor="#6a82fb"
               animate
             >
-              {"Senior Frontend Engineer"}
+              {info.jobTitle}
             </TextGradient>
           </TextPopup>
         </div>

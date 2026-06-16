@@ -4,7 +4,7 @@ import { getWorkExperiences, type WorkExperience } from "@/services/jobs";
 import Image from "next/image";
 import { getTagIcon, getTagName } from "@/services/tags";
 import { getCardTheme, getThemeBackground } from "@/services/cardThemes";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { InView } from "react-intersection-observer";
 
 export default function WorkExperiences({
@@ -15,6 +15,11 @@ export default function WorkExperiences({
     "bg-linear-to-b from-(--from-color) to-(--to-color) dark:from-(--from-color)/20 dark:to-(--to-color)/20";
 
   const [current, setCurrent] = useState(0);
+  const [pending, setPending] = useState(false);
+  const slidesRef = useRef<HTMLDivElement[]>(
+    Array.from({ length: jobs.length }),
+  );
+
   const [fromBg, toBg] = getThemeBackground(jobs[current].theme);
   const yearClass = (active: boolean) =>
     `cursor-pointer w-fit text-sm uppercase mix-blend-luminosity ${active ? "text-zinc-700 dark:text-zinc-200" : "text-zinc-400 dark:text-zinc-500"}`;
@@ -49,7 +54,14 @@ export default function WorkExperiences({
             <button
               key={job.startDate}
               className={yearClass(index === current)}
-              onClick={() => setCurrent(index)}
+              onClick={() => {
+                setPending(false);
+                setCurrent(index);
+
+                slidesRef.current
+                  .at(index)
+                  ?.scrollIntoView({ behavior: "instant", block: "start" });
+              }}
             >
               {job.startDate.slice(0, 4)}
             </button>
@@ -71,16 +83,25 @@ export default function WorkExperiences({
 
       {jobs.map((job, index) => (
         <InView
-          as="div"
           key={index}
-          className="w-screen h-[50vh] -z-1"
-          onChange={(inView) => {
-            if (inView) setCurrent(index);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          ref={(el: any) => {
+            if (el?.node) slidesRef.current[index] = el.node;
           }}
-          threshold={[0.1, 0.9]}
+          as="div"
+          className="w-screen h-[60vh] -z-1"
+          onChange={(inView) => {
+            if (pending || !inView) return;
+
+            if (!pending) setCurrent(index);
+            if (index === current) setPending(false);
+          }}
+          threshold={0.9}
+          delay={100}
           title={`${job.company.name} - ${job.role}`}
         />
       ))}
+      <div className="w-screen h-[40vh] -z-1" />
     </div>
   );
 }

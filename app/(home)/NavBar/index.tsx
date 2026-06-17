@@ -31,7 +31,7 @@ export default function NavBar({ menu }: { menu: MenuItem[] }) {
               }}
             >
               <TextHoverHighlight
-                className="text-mauve-500 text-shadow-lg text-shadow-mauve-50 group-hover:text-shadow-none dark:text-zinc-300 dark:text-shadow-zinc-800"
+                className="text-mauve-500 text-shadow-lg text-shadow-mauve-50/80 group-hover:text-shadow-none dark:text-zinc-300 dark:text-shadow-zinc-800/80"
                 hoverTextColor="#ffffff"
                 hoverBgColor={colors.at(index) || "#6a82fb"}
               >

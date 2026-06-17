@@ -20,6 +20,7 @@ export default function ScrollTopButton() {
       <button
         className={`fixed bottom-4 right-4 z-50 size-9 flex justify-center items-center rounded-full shadow-md ${animationClass} text-white border border-(--from) bg-linear-to-b from-(--from) to-(--to) before:content-[''] before:absolute before:w-full before:h-full before:rounded-full before:border-2 before:border-(--to) before:bg-none`}
         disabled={!showButton}
+        title="Scroll on top"
         style={
           {
             "--from": "var(--color-zinc-800)",
@@ -42,10 +43,11 @@ export default function ScrollTopButton() {
 function ChevronUp(props: React.SVGAttributes<SVGSVGElement>) {
   return (
     <svg
+      {...props}
       viewBox="0 -4.5 24 24"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      {...props}
+      aria-label="Scroll top"
     >
       <g stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
         <g transform="translate(-521.000000, -1202.000000)" fill="currentColor">

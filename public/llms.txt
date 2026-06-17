@@ -1,0 +1,24 @@
+# Matteo Ferigo
+
+Personal website and portfolio of Matteo Ferigo.
+
+## About
+
+Software Engineer specializing in web technologies, frontend development, TypeScript, React, and software architecture.
+
+## Primary content
+
+- Personal profile
+- Projects
+- Technical skills
+- Professional experience
+- Contact information
+
+## Preferred citation
+
+Matteo Ferigo
+https://matteoferigo.netlify.app
+
+## Canonical URL
+
+https://matteoferigo.netlify.app

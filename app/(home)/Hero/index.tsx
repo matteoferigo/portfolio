@@ -16,21 +16,22 @@ export default function Hero({
       <div />
 
       <main className="flex flex-col md:flex-row justify-center items-center gap-x-8 gap-y-4">
-        <div className="group relative size-xl md:size-2xl rounded-2xl overflow-hidden shadow-xl">
+        <div className="group relative size-xl md:size-2xl rounded-2xl overflow-hidden shadow-xl *:transition-opacity *:duration-500">
           <Image
-            className="absolute top-0 z-1 opacity-0 group-hover:opacity-100 transition-opacity duration-500 dark:opacity-100"
+            className="absolute top-0 z-1 opacity-0 group-hover:opacity-100 dark:relative dark:z-0 dark:opacity-100"
             src="/matrix.jpg"
             alt={`${info.firstName} ${info.lastName} with Matrix filter`}
             width={200}
             height={200}
           />
           <Image
-            className="-z-1 grayscale-25"
+            className="z-0 grayscale-25 dark:absolute dark:top-0 dark:z-1 dark:opacity-0 group-hover:opacity-100"
             src="/avatar.jpg"
             alt={`${info.firstName} ${info.lastName} avatar`}
             width={200}
             height={200}
             priority
+            fetchPriority="high"
           />
         </div>
 
